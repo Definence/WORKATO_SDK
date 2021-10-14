@@ -8,7 +8,7 @@ EDITOR=nano workato edit settings.yaml.enc
 
 ### Run specs
 ```shell
-rspec spec --format documentation --color --require spec_helper
+rspec spec
 ```
 
 ### Jira
@@ -20,5 +20,5 @@ workato exec test --connection=jira --verbose
 
 ##### #get_issue
 ```shell
-workato exec actions.get_issue.execute --connection=jira --verbose --input="fixtures/actions/get_issue/input.json"
+workato exec actions.get_issue.execute --connection=jira --verbose --input="fixtures/actions/get_issue/input.json" --output="fixtures/actions/get_issue/output.json"
 ```

@@ -1,4 +1,4 @@
-# require 'byebug'
+require 'byebug'
 
 {
   title: "Jira SDK Lab",

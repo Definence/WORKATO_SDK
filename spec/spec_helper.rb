@@ -30,7 +30,8 @@ VCR.configure do |config|
     Workato::Testing::VCRMultipartBodyMatcher.call(request1, request2)
   end
   config.default_cassette_options = {
-    record: ENV.fetch('VCR_RECORD_MODE', :none).to_sym,
+    record: ENV.fetch('VCR_RECORD_MODE', :once).to_sym,
+    # record: ENV.fetch('VCR_RECORD_MODE', :none).to_sym,
     serialize_with: :encrypted,
     match_requests_on: %i[uri headers_without_user_agent body]
   }
