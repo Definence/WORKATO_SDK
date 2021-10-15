@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'byebug'
-require 'spec_helper.rb'
+require 'spec_helper'
 
 RSpec.describe 'connector', :vcr do
   let(:settings) { Workato::Connector::Sdk::Settings.from_encrypted_file('settings.yaml.enc')[:jira] }

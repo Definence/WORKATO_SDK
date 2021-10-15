@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'byebug'
 
 {
-  title: "Jira SDK",
+  title: 'Jira SDK',
 
   connection: {
     fields: [
@@ -18,11 +20,11 @@ require 'byebug'
         name: 'api_token',
         control_type: 'password',
         label: 'API token'
-      },
+      }
     ],
 
     authorization: {
-      type: "basic_auth",
+      type: 'basic_auth',
       apply: lambda do |connection|
         user(connection['username'])
         password(connection['api_token'])
@@ -35,8 +37,8 @@ require 'byebug'
   },
 
   test: lambda do |_connection|
-    get("/rest/api/3/myself").
-      after_error_response(401) do |code, body, header, message|
+    get('/rest/api/3/myself')
+      .after_error_response(401) do |_code, body, _header, message|
         error("#{message}: #{body}")
       end
   end,
@@ -48,38 +50,37 @@ require 'byebug'
       subtitle: 'Get issue details from Jira Cloud',
       description: "Get <span class='provider'>issue ID and issue summary</span> " \
                    "from <span class='provider'>Jira Cloud</span>",
-      help: "This action retriieves your issue ID and issue summary from Jira Cloud. Use thus acttion" \
-            " to search for issues from your Jira Cloud instance",
+      help: 'This action retriieves your issue ID and issue summary from Jira Cloud. Use thus acttion' \
+            ' to search for issues from your Jira Cloud instance',
 
-
-      input_fields: lambda do |object_definitions, connection, config_fields|
+      input_fields: lambda do |_object_definitions, _connection, _config_fields|
         [
           {
             name: 'issue_id',
             label: 'Issue ID',
-            optional: false,
-          },
+            optional: false
+          }
         ]
       end,
 
-      output_fields: lambda do |object_definitions|
+      output_fields: lambda do |_object_definitions|
         [
           { name: 'key', label: 'Issue key' },
           { name: 'id', label: 'Issue ID' },
           { name: 'fields', label: 'Issue fields', type: 'object', properties: [
-            { name: 'summary', label: 'Summary' },
-          ] },
+            { name: 'summary', label: 'Summary' }
+          ] }
         ]
       end,
 
       execute: lambda do |_connection, input, _input_schema, _output_schema|
         url = "/rest/api/3/issue/#{input['issue_id']}"
-        get(url).
-          after_error_response([404]) do |code, body, header, message|
+        get(url)
+          .after_error_response([404]) do |_code, body, _header, message|
             error("#{message}: #{body}")
           end
-      end,
-    },
+      end
+    }
   },
 
   triggers: {
