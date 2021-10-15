@@ -5,7 +5,7 @@ require 'spec_helper.rb'
 
 RSpec.describe 'connector', :vcr do
   let(:settings) { Workato::Connector::Sdk::Settings.from_encrypted_file('settings.yaml.enc')[:jira] }
-  let(:connector) { Workato::Connector::Sdk::Connector.from_file('connector.rb', settings) }
+  let(:connector) { Workato::Connector::Sdk::Connector.from_file('jira.rb', settings) }
 
   it { expect(connector).to be_present }
 
@@ -23,6 +23,20 @@ RSpec.describe 'connector', :vcr do
 
       it 'returns response that is not excessively large' do
         expect(output.to_s.length).to be < 5000
+      end
+    end
+  end
+
+  describe 'execute' do
+    subject(:output) { action.execute(settings, input) }
+
+    context 'get_issue' do
+      let(:action) { connector.actions.get_issue }
+      let(:input) { JSON.parse(File.read('fixtures/actions/jira/get_issue_input.json')) }
+      let(:expected_output) { JSON.parse(File.read('fixtures/actions/jira/get_issue_output.json')) }
+
+      it 'returns a response with an artist' do
+        expect(output).to eq(expected_output)
       end
     end
   end

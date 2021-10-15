@@ -1,7 +1,7 @@
 require 'byebug'
 
 {
-  title: "Jira SDK Lab",
+  title: "Jira SDK",
 
   connection: {
     fields: [
