@@ -1,4 +1,5 @@
 [![Workato SDK](https://github.com/Definence/WORKATO_SDK/actions/workflows/ruby.yml/badge.svg?branch=master)](https://github.com/Definence/WORKATO_SDK/actions/workflows/ruby.yml)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
 ### Based on [SDK](https://github.com/workato/workato-connector-sdk)
 ### ENV variables [here](https://docs.google.com/document/d/190QP8DSwGMhJ11xSEKEw1fc4h_EWMcxWtl0Bbstx7vA/edit)

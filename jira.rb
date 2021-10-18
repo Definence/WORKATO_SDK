@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'byebug'
-
 {
   title: 'Jira SDK',
 
@@ -81,21 +79,5 @@ require 'byebug'
           end
       end
     }
-  },
-
-  triggers: {
-
-  },
-
-  methods: {
-
-  },
-
-  object_definitions: {
-
-  },
-
-  pick_lists: {
-
   }
 }
